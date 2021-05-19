@@ -2,10 +2,12 @@
   box-sizing: border-box;
 }
 
-.grid-container {
-  display: grid;
-  grid-gap: 0.8%;
-  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
-  margin: 0 auto;
-  width: 70%;
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.75rem;
+}
+
+.wrapper {
+  margin: 10rem;
 }

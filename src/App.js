@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getPokemonTcgData } from './services/pokemonTcg';
 import Card from './components/Card';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   const [pokemonTcgData, setPokemonTcgData] = useState([]);
@@ -31,11 +32,14 @@ function App() {
       ) : (
         <>
           <Navbar handleTcgSet={handleTcgSet} />
-          <div className="grid-container">
-            {pokemonTcgData.map((pokemon, i) => {
-              return <Card key={i} pokemon={pokemon} />;
-            })}
+          <div className="wrapper">
+            <div className="content">
+              {pokemonTcgData.map((pokemon, i) => {
+                return <Card key={i} pokemon={pokemon} />;
+              })}
+            </div>
           </div>
+          <Footer />
         </>
       )}
     </div>
