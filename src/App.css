@@ -3,8 +3,10 @@
 }
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, 250px);
+  justify-content: space-between;
 }
 
 .wrapper {
