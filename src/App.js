@@ -26,23 +26,21 @@ function App() {
   };
 
   return (
-    <div>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <>
-          <Navbar handleTcgSet={handleTcgSet} />
-          <div className="wrapper">
-            <div className="content">
-              {pokemonTcgData.map((pokemon, i) => {
-                return <Card key={i} pokemon={pokemon} />;
-              })}
-            </div>
+    <>
+      <Navbar handleTcgSet={handleTcgSet} />
+      <div className="wrapper">
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <div className="gallery">
+            {pokemonTcgData.map((pokemon, i) => {
+              return <Card key={i} pokemon={pokemon} />;
+            })}
           </div>
-          <Footer />
-        </>
-      )}
-    </div>
+        )}
+      </div>
+      <Footer />
+    </>
   );
 }
 
