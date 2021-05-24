@@ -21,6 +21,12 @@ function Navbar({ handleTcgSet }) {
           <a id="base5" href="#" onClick={onClick}>
             Team Rocket
           </a>
+          <a id="gym1" href="#" onClick={onClick}>
+            Gym Heroes
+          </a>
+          <a id="gym2" href="#" onClick={onClick}>
+            Gym Challenge
+          </a>
         </p>
       </div>
     </div>
