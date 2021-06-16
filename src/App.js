@@ -1,7 +1,9 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { getPokemonTcgData } from './services/pokemonTcg';
+import { Route, Switch } from 'react-router-dom';
 import Card from './components/Card';
+import CardDetail from './components/CardDetail';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -26,21 +28,28 @@ function App() {
   };
 
   return (
-    <>
+    <div>
       <Navbar handleTcgSet={handleTcgSet} />
       <div className="wrapper">
         {loading ? (
           <h1>Loading...</h1>
         ) : (
-          <div className="gallery">
-            {pokemonTcgData.map((pokemon, i) => {
-              return <Card key={i} pokemon={pokemon} />;
-            })}
-          </div>
+          <Switch>
+            <Route exact path="/">
+              <div className="gallery">
+                {pokemonTcgData.map((pokemon, i) => {
+                  return <Card key={i} pokemon={pokemon} />;
+                })}
+              </div>
+            </Route>
+            <Route path="/cards/:cardId">
+              <CardDetail />
+            </Route>
+          </Switch>
         )}
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
