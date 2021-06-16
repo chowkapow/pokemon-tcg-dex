@@ -2,13 +2,6 @@
   box-sizing: border-box;
 }
 
-.gallery {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, 250px);
-  justify-content: space-between;
-}
-
 .wrapper {
   margin: 0 20rem 5rem 20rem;
 }

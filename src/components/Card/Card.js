@@ -1,12 +1,11 @@
 import './style.css';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-function Card({ pokemon }) {
+function Card() {
+  let { cardId } = useParams();
   return (
     <div className="Card">
-      <Link to={`cards/${pokemon.id}`}>
-        <img src={pokemon.images.small} alt={pokemon.name} />
-      </Link>
+      <h2>Hi {cardId}</h2>
     </div>
   );
 }

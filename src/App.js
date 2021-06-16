@@ -2,8 +2,8 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { getPokemonTcgData } from './services/pokemonTcg';
 import { Route, Switch } from 'react-router-dom';
+import Cards from './components/Cards';
 import Card from './components/Card';
-import CardDetail from './components/CardDetail';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -36,14 +36,10 @@ function App() {
         ) : (
           <Switch>
             <Route exact path="/">
-              <div className="gallery">
-                {pokemonTcgData.map((pokemon, i) => {
-                  return <Card key={i} pokemon={pokemon} />;
-                })}
-              </div>
+              <Cards pokemonTcgData={pokemonTcgData} />
             </Route>
             <Route path="/cards/:cardId">
-              <CardDetail />
+              <Card />
             </Route>
           </Switch>
         )}
