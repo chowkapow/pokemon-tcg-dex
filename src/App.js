@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getPokemonTcgData } from './services/pokemonTcg';
 import { Route, Switch } from 'react-router-dom';
 import Cards from './components/Cards';
@@ -11,13 +11,21 @@ function App() {
   const [pokemonTcgData, setPokemonTcgData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [tcgSet, setTcgSet] = useState('set.id:base1');
+  const cache = useRef({});
 
   useEffect(() => {
-    async function fetchData() {
-      let response = await getPokemonTcgData(tcgSet);
-      setPokemonTcgData(response.data);
+    const fetchData = async () => {
+      setLoading(true);
+      if (cache.current[tcgSet]) {
+        const data = cache.current[tcgSet];
+        setPokemonTcgData(data);
+      } else {
+        const response = await getPokemonTcgData(tcgSet);
+        cache.current[tcgSet] = response.data;
+        setPokemonTcgData(response.data);
+      }
       setLoading(false);
-    }
+    };
     fetchData();
   }, [tcgSet]);
 
